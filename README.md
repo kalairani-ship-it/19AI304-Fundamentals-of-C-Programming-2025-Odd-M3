@@ -28,7 +28,11 @@ To formulate a C program to convert a decimal number into its binary equivalent 
 ### Step 8: 
    Stop
 # Program:
+   #include <stdio.h> void bin(int n) { if(n==0){ return; } else { bin(n/2); printf("%d",n%2); } } int main() { int num; scanf("%d",&num); printf("%d in decimal = ",num); bin(num); printf(" in binary\n"); return 0;
+}
 # Output:
+<img width="1183" height="358" alt="m31" src="https://github.com/user-attachments/assets/c6ee4338-1ad9-42f7-a82f-fe8992e75b9d" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -67,7 +71,57 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 9: 
   Stop
 # Program:
+  #include <stdio.h>
+
+int main() { int n; int a[10][10]; int i, j, k; int min, colIndex; int saddleRow = -1, saddleCol = -1, saddleValue;
+
+scanf("%d", &n);
+
+for (i = 0; i < n; i++)
+    for (j = 0; j < n; j++)
+        scanf("%d", &a[i][j]);
+printf("The matrix is\n");
+for (i = 0; i < n; i++)
+{
+    for (j = 0; j < n; j++)
+        printf("%d ", a[i][j]);
+    printf("\n");
+}
+for (i = 0; i < n; i++)
+{
+    min = a[i][0];
+    colIndex = 0;
+    for (j = 1; j < n; j++)
+    {
+        if (a[i][j] <= min)   // IMPORTANT FIX
+        {
+            min = a[i][j];
+            colIndex = j;
+        }
+    }
+    for (k = 0; k < n; k++)
+    {
+        if (a[k][colIndex] > min)
+            break;
+    }
+    if (k == n)
+    {
+        saddleRow = i;
+        saddleCol = colIndex;
+        saddleValue = min;
+    }
+}
+
+if (saddleRow != -1)
+    printf("\nSaddle point (%d, %d) : %d", saddleRow, saddleCol, saddleValue);
+else
+    printf("\nNo Saddle Point");
+
+return 0;
+}
 # Output:
+<img width="645" height="450" alt="m32" src="https://github.com/user-attachments/assets/e53c8910-fd29-4043-a003-53c0225e514a" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -101,7 +155,11 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10: 
   Stop
 # Program:
+  #include <stdio.h> #include <string.h>
+int main() { char str[100]; int i, length; printf("Enter a string: "); fgets(str, sizeof(str), stdin); str[strcspn(str, "\n")] = '\0'; length = strlen(str); printf("Reversed string: "); for (i = length - 1; i >= 0; i--) { printf("%c", str[i]); } printf("\n"); return 0; }
 # Output:
+<img width="515" height="230" alt="m33" src="https://github.com/user-attachments/assets/e334652d-cf86-458e-afcf-e58e78c78691" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -135,7 +193,12 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8:
   Stop
 # Program:
+  #include <stdio.h> int main() { char str[200]; int freq[256] = {0};
+int i; printf("Enter a string: "); fgets(str, sizeof(str), stdin); for (i = 0; str[i] != '\0'; i++) { freq[(unsigned char)str[i]]++; } printf("\nCharacter Frequency:\n"); for (i = 0; i < 256; i++) { if (freq[i] > 0 && i != '\n')
+{ printf("'%c' = %d\n", i, freq[i]); } } return 0; }
 # Output:
+<img width="505" height="538" alt="m34" src="https://github.com/user-attachments/assets/bb98cd6c-8f0f-42c1-8846-b90b74d50cbb" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -169,7 +232,10 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8: 
   Stop
 # Program:
+  #include <stdio.h> #include <string.h> int main() { char str[300]; char words[100][50]; int count = 0; int i, j; int isDuplicate; printf("Enter a string: "); fgets(str, sizeof(str), stdin); str[strcspn(str, "\n")] = '\0'; char *token = strtok(str, " "); while (token != NULL) { strcpy(words[count], token); count++; token = strtok(NULL, " "); } printf("\nString with unique words:\n"); for (i = 0; i < count; i++) { isDuplicate = 0; for (j = 0; j < i; j++) { if (strcmp(words[i], words[j]) == 0) { isDuplicate = 1; break; } } if (!isDuplicate) { printf("%s ", words[i]); } } printf("\n"); return 0; }
 # Output:
+<img width="565" height="293" alt="m35" src="https://github.com/user-attachments/assets/1a08db0b-9b0d-4e41-b63c-1ec0ee2d1f4e" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
